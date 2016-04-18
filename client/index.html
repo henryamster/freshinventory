@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fresh Inventory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  
+  <body ng-app="Product" ng-controller="ProductController as app">
+    <h1 class="green">Fresh Inventory</h1> 
+    <form method = "POST" action='/'>
+       <input type="text" placeholder="Item Description" name="Item Description">
+  <input type="text" placeholder="UPC" name="UPC">
+  <select name="Group" id="Group">
+    <option>Wet Rack</option>
+    <option>Cold Rack</option>
+    <option>Apples</option>
+    <option>Citrus</option>
+    <option>Tropical</option>
+    <option>Berries</option>
+    <option>Stone Fruit</option>
+    <option>Vegetable/Cycle 4</option>
+    <option>Tomatoes</option>
+    <option>Potatoes & Onions</option>
+  </select>
+  <button type="submit">Submit</button>
+  
+  
+  </body>
+  <script src="/node_modules/angular/angular.js"></script>
+</html>

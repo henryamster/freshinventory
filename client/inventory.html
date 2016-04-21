@@ -7,30 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/basic.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="/js/core.js"></script>
 
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css'>
 
     
     
-        
-
-    
   </head>
 
-  <body>
+  <body ng-app="productList">
+
 <div class="col s12 center">
     <header>Fresh Inventory > Store: 161 Date: 4/18/2016 </header>
     <h1 class="green-text"><a href="/index.html">Fresh Inventory</a></h1>
-<input type="text" name="search" placeholder="Search for an item..." />
+<input type="text" name="search" ng-model="searchText" class="search" placeholder="Search for an item..." />
 <div class="row">
     <div class="col s12">
       <ul class="tabs">
-        <li class="tab col s3"><a href="#test1">Wet Rack</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Cold Rack</a></li>
-        <li class="tab col s3"><a href="#test3">Apples</a></li>
-        
-       
-        <li class="tab col s3"><a href="#test3">Citrus</a></li>
+        <li class="tab col s3" ><a ng-click="searchText = {category: 'Wet Rack'}">Wet Rack</a></li>
+        <li class="tab col s3"><a ng-click="searchText = {category: 'Cold Rack'}">Cold Rack</a></li>
+        <li class="tab col s3"><a ng-click="searchText = {category: 'Apples'}">Apples</a></li>
+        <li class="tab col s3"><a ng-click="searchText = {category: 'Citrus'}">Citrus</a></li>
 
       </ul>
     </div>
@@ -39,9 +38,9 @@
 <div class="row">
     <div class="col s12">
       <ul class="tabs">
-        <li class="tab col s3"><a href="#test1">Berries & Grapes</a></li>
-        <li class="tab col s3"><a class="active" href="#test2">Stone Fruit</a></li>
-        <li class="tab col s3"><a href="#test3">Tomatoes & Cucumbers</a></li>
+        <li class="tab col s3"><a ng-click="searchText = {category: 'Berries & Grapes'}">Berries & Grapes</a></li>
+        <li class="tab col s3"><a ng-click="searchText = {category: 'Stone Fruit'}">Stone Fruit</a></li>
+        <li class="tab col s3"><a ng-click="searchText = {category: 'Tomatoes & Cucumbers'}">Tomatoes & Cucumbers</a></li>
         
        
         
@@ -55,24 +54,34 @@
       <ul class="tabs">
         
        
-        <li class="tab col s3"><a href="#test3">Cycle 4/Vegetables</a></li>
-       <li class="tab col s3"><a href="#test3">Tropical</a></li>
-        <li class="tab col s3"><a href="#test3">Potatoes & Onions</a></li>
+        <li class="tab col s3"><a ng-click="searchText = {category: 'Vegetable/Cycle 4'}">Cycle 4/Vegetables</a></li>
+       <li class="tab col s3"><a ng-click="searchText = {category: 'Tropical'}">Tropical</a></li>
+        <li class="tab col s3"><a ng-click="searchText = {category: 'Potatoes & Onions'}">Potatoes & Onions</a></li>
 
       </ul>
     </div>
   </div>
+
+
+
+ <div ng-controller="productController">
 
 <div class="col s12 z-index-3">
   <div class="row">
         <div class="col s12 m12">
-          <div class="card yellow darken-1 z-index-3">
+          <div class="card yellow darken-1 z-index-3" ng-repeat ="product in products | filter:searchText | orderBy:'name'" class="row">
             <div class="card-content white-text">
-              <span class="card-title">{{product.name}}</span>
+              <span class="card-title" >{{product.name}}</span>
               <p>{{product.upc}} | <span class='red-text'>{{product.category}}</span></p>
             </div>
             <div class="card-action">
-              <button class='btn red'>-</button> <strong>4</strong> <button class='btn green'>+</button>
+              <button class='btn red darken-3' >-1</button> 
+              <button class='btn red darken-2' >-1/2</button>
+              <button class='btn red darken-1' >-1/4</button>
+             <strong class="bigNumber">4</strong>
+              <button class='btn green lighten-1'>+1/4</button>
+              <button class='btn green lighten-2'>+1/2</button>
+              <button class='btn green lighten-3'>+1</button>
             </div>
           </div>
         </div>
@@ -82,6 +91,7 @@
     
     
     
+    </div>
     </div>
     
   </body>

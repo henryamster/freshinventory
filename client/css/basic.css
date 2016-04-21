@@ -1,3 +1,7 @@
 h1 {
 font-family: 'Pacifico', cursive;
 }
+.bigNumber{
+    font-size:3.6rem;
+    padding:20px;
+}

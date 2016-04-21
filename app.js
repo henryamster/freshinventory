@@ -18,30 +18,49 @@ mongoose.connect('mongodb://localhost:27017/test2')
         upc : Number,
         category : String
     });
+    var Inventory = mongoose.model('Inventory', {
+        store : Number,
+        date: {type: Date, default: Date.now},
+        inventory: Object
+        });
+/*
+INVENTORY CONTROLLER
+*/
+/*/view route for current inventory 
+app.get('/inventory', function(req, res){
+    Inventory.findOne({store: 161},function(err, inventory){
+        if (err) throw err;
+        res.json(inventory);
+    });
+        
+  /*      
+        
+        
+/*
+PRODUCTS CONTROLLER
+*/
 
-
-//view route
+//view route for Products controller
 app.get('/products', function (req, res) {
       Product.find(function(err, items){
           if (err) throw err;
           res.json(items);
       });
 });
-//post route
+//post route for Products controller
 app.post('/products', function (req, res){
     Product.create({
         name : req.body.name,
         upc : req.body.upc,
         category : req.body.category
     }), function(err, product) {
-        if (err) throw err;
+        if (err) throw err;}
         Product.find(function(err, products){
             if (err) throw err;
             res.json(products);
         })
-    }
 });
-//delete route
+//delete route for Products controller
 app.delete('/products/:product_id', function (req, res){
     Product.remove({
         _id : req.params.product_id }, function(err, product){
@@ -53,6 +72,11 @@ app.delete('/products/:product_id', function (req, res){
         }
     )
 });
+
+
+
+
+
       //route to angular app
 app.get('/', function (req, res){
     res.sendfile(__dirname + '/client/index.html');

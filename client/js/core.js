@@ -18,6 +18,6 @@ function productController($scope, $http){
         $http.delete('/products/' + id).success(function(data){
             $scope.products = data;
         }).error(function(data){console.log(data)});
-    }
+    };
     
 }

@@ -1,41 +1,20 @@
-<!DOCTYPE html ng-app="productList">
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Fresh Inventory</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+          <link rel="stylesheet" href="css/basic.css">
+           <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css'>
+      <title>Fresh Inventory</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
     <script src="/js/core.js"></script>
-  
-  </head>
-  
-  <body ng-app="productList" ng-controller="productController">
+    </head>
     
-    <h1 class="green">Fresh Inventory</h1> 
-    <form>
-       <input type="text" ng-model="formData.name" placeholder="Item Description" name="name">
-  <input type="text" ng-model="formData.upc"placeholder="upc" name="upc">
-  <select name="category" ng-model="formData.category" id="category">
-    <option>Wet Rack</option>
-    <option>Cold Rack</option>
-    <option>Apples</option>
-    <option>Citrus</option>
-    <option>Tropical</option>
-    <option>Berries</option>
-    <option>Stone Fruit</option>
-    <option>Vegetable/Cycle 4</option>
-    <option>Tomatoes</option>
-    <option>Potatoes & Onions</option>
-  </select>
-  <button type="submit" ng-click="createProduct()">Submit</button>
-  </form>
-  <ul ng-repeat="product in products">
-    <li>{{product.name}} {{product.upc}} {{product.category}}
-                        <button ng-click="deleteProduct(product._id)"> delete {{ product.id }}
-                    </li>
-    
-  </ul>
-  
-  </body>
-  
+    <body>
+        <h1 class="green-text">Fresh Inventory</h1>
+        <h3>What would you like to do?</h3>
+        <a href="/products.html"><button>Add/Delete a Product</button></button></a>
+        <a href="/store.html"><button>Take Inventory</button> </a>
+    </body>
 </html>

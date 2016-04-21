@@ -1,0 +1,56 @@
+<!DOCTYPE html ng-app="productList">
+<html>
+  <head>
+    <title>Fresh Inventory</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+       <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css'>
+     <link rel="stylesheet" href="/css/basic.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+    <script src="/js/core.js"></script>
+  
+  </head>
+  
+  <body ng-app="productList" ng-controller="productController">
+    
+    <h1 class="green-text">Fresh Inventory</h1> 
+    <form>
+       <input type="text" ng-model="formData.name" placeholder="Item Description" name="name">
+  <input type="text" ng-model="formData.upc"placeholder="upc" name="upc">
+  <select class="browser-default" name="category" ng-model="formData.category" id="category">
+    <option>Wet Rack</option>
+    <option>Cold Rack</option>
+    <option>Apples</option>
+    <option>Citrus</option>
+    <option>Tropical</option>
+    <option>Berries & Grapes</option>
+    <option>Stone Fruit</option>
+    <option>Vegetable/Cycle 4</option>
+    <option>Tomatoes & Cucumbers</option>
+    <option>Potatoes & Onions</option>
+  </select>
+  <button type="submit" ng-click="createProduct()">Submit</button>
+  </form>
+  
+  <input ng-model="searchText" class="search" placeholder="Search for an item...">
+  <div ng-repeat ="product in products | filter:searchText" class="row">
+        <div class="col s12 m6">
+          <div class="card green darken-1 z-index-3">
+            <div class="card-content white-text">
+              <span class="card-title">{{product.name}}</span>
+              <p>{{product.upc}} | <span class='red-text'>{{product.category}}</span></p>
+            </div>
+            <div class="card-action">
+              <button class ="btn" ng-click="deleteProduct(product._id)"> delete {{product.product.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+</div>
+    
+  
+  </body>
+  
+</html>

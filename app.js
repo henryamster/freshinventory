@@ -74,13 +74,11 @@ app.delete('/products/:product_id', function (req, res){
 });
 
 
-
-
-
       //route to angular app
 app.get('/', function (req, res){
     res.sendfile(__dirname + '/client/index.html');
 });
+      
       
       //res.sendfile(__dirname + '/client/index.html');
       //var cursor = db.collection('quotes').find();

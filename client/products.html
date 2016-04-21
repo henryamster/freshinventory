@@ -13,12 +13,13 @@
   </head>
   
   <body ng-app="productList" ng-controller="productController">
+    <div class="col s12 center">
+    <h1 class="green-text"><a href="/index.html">Fresh Inventory</a></h1> 
     
-    <h1 class="green-text">Fresh Inventory</h1> 
     <form>
-       <input type="text" ng-model="formData.name" placeholder="Item Description" name="name">
-  <input type="text" ng-model="formData.upc"placeholder="upc" name="upc">
-  <select class="browser-default" name="category" ng-model="formData.category" id="category">
+       <input type="text" ng-model="formData.name" placeholder="Item Description" name="name" ng-required="true" required>
+  <input type="text" ng-model="formData.upc"placeholder="upc" name="upc" ng-required="true" required>
+  <select class="browser-default" name="category" ng-model="formData.category" id="category" ng-required="true" required>
     <option>Wet Rack</option>
     <option>Cold Rack</option>
     <option>Apples</option>
@@ -30,13 +31,13 @@
     <option>Tomatoes & Cucumbers</option>
     <option>Potatoes & Onions</option>
   </select>
-  <button type="submit" ng-click="createProduct()">Submit</button>
+  <button class="btn" type="submit" ng-click="createProduct()">Submit</button>
   </form>
   
   <input ng-model="searchText" class="search" placeholder="Search for an item...">
-  <div ng-repeat ="product in products | filter:searchText" class="row">
-        <div class="col s12 m6">
-          <div class="card green darken-1 z-index-3">
+  <div ng-repeat ="product in products | filter:searchText | orderBy:'name'" class="row">
+        <div class="col s12 m12">
+          <div class="card yellow darken-1 z-index-3">
             <div class="card-content white-text">
               <span class="card-title">{{product.name}}</span>
               <p>{{product.upc}} | <span class='red-text'>{{product.category}}</span></p>
@@ -49,7 +50,7 @@
       </div>
 
 </div>
-    
+    </div>
   
   </body>
   
